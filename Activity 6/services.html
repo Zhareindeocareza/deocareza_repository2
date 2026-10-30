@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#123b72">
+    <title>Services | Paw &amp; Tide Pet Shop</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 28px;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(126, 195, 242, 0.35), transparent 28%),
+                radial-gradient(circle at 90% 90%, rgba(91, 151, 210, 0.3), transparent 30%),
+                #102a56;
+            color: #102a56;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .site {
+            max-width: 1200px;
+            min-height: calc(100vh - 56px);
+            margin: 0 auto;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 24px;
+            background: #e5f5ff;
+            box-shadow: 0 25px 70px rgba(3, 18, 45, 0.3);
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            padding: 24px 7%;
+            border-bottom: 4px solid #8dcdf5;
+            background: #102a56;
+        }
+
+        .brand {
+            color: #e5f5ff;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #d8efff;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            color: #8dcdf5;
+        }
+
+        nav .contact-link {
+            padding: 11px 18px;
+            border-radius: 8px;
+            background: #bce6ff;
+            color: #102a56;
+        }
+
+        nav .contact-link:hover,
+        nav .contact-link:focus-visible {
+            background: #e5f5ff;
+            color: #102a56;
+        }
+
+        .hero {
+            position: relative;
+            display: flex;
+            min-height: 510px;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 82px 9%;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, rgba(13, 38, 77, 0.95) 0%, rgba(18, 57, 105, 0.84) 46%, rgba(18, 69, 126, 0.32) 100%),
+                url("../../../Downloads/38-red-light-vs-laser-therapy-for-dogs-hero.webp") center 43% / cover no-repeat,
+                linear-gradient(125deg, #174d88, #58b1e1);
+        }
+
+        .eyebrow {
+            margin: 0 0 20px;
+            padding: 9px 13px;
+            border: 1px solid rgba(229, 245, 255, 0.32);
+            border-radius: 999px;
+            background: rgba(13, 38, 77, 0.34);
+            color: #a6e5ff;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 680px;
+            margin: 0;
+            color: #fff;
+            font-size: clamp(46px, 7vw, 78px);
+            letter-spacing: -2px;
+            line-height: 1.02;
+        }
+
+        .hero-copy {
+            max-width: 550px;
+            margin: 24px 0 0;
+            color: #e5f5ff;
+            font-size: 18px;
+            line-height: 1.75;
+        }
+
+        .hero .button {
+            margin-top: 30px;
+            padding: 15px 22px;
+            background: #bceaff;
+            color: #102a56;
+            box-shadow: 0 8px 24px rgba(3, 18, 45, 0.18);
+        }
+
+        .hero .button:hover,
+        .hero .button:focus-visible {
+            background: #fff;
+        }
+
+        .content {
+            padding: 58px 9% 70px;
+        }
+
+        .section-heading {
+            margin: 0 0 12px;
+            color: #102a56;
+            font-size: 34px;
+        }
+
+        .section-intro {
+            max-width: 650px;
+            margin: 0 0 30px;
+            color: #526b86;
+            line-height: 1.6;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 26px;
+            border: 1px solid #c6e2f4;
+            border-radius: 14px;
+            background: #f5fbff;
+        }
+
+        .card-mark {
+            display: grid;
+            width: 46px;
+            height: 46px;
+            margin-bottom: 20px;
+            place-items: center;
+            border-radius: 12px;
+            background: #d1edff;
+            color: #245e96;
+            font-size: 24px;
+        }
+
+        .card h2 {
+            margin: 0 0 12px;
+            color: #173b70;
+            font-size: 20px;
+        }
+
+        .card p {
+            margin: 0;
+            color: #526b86;
+            line-height: 1.65;
+        }
+
+        .cta {
+            padding: 38px;
+            border-radius: 16px;
+            background: #d8efff;
+            text-align: center;
+        }
+
+        .cta h2 {
+            margin: 0 0 10px;
+            color: #102a56;
+            font-size: 28px;
+        }
+
+        .cta p {
+            margin: 0 0 20px;
+            color: #526b86;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 21px;
+            border-radius: 9px;
+            background: #173b70;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: #245e96;
+        }
+
+        footer {
+            padding: 22px 7%;
+            background: #102a56;
+            color: #d8efff;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 14px;
+            }
+
+            .site {
+                min-height: calc(100vh - 28px);
+                border-radius: 18px;
+            }
+
+            .topbar {
+                gap: 12px;
+                padding: 20px 6%;
+            }
+
+            nav {
+                justify-content: flex-end;
+                flex-wrap: wrap;
+                gap: 10px 14px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            nav .contact-link {
+                padding: 8px 11px;
+            }
+
+            .hero {
+                min-height: 460px;
+                padding: 64px 7%;
+            }
+
+            .content {
+                padding: 48px 7%;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .hero {
+                min-height: 430px;
+                padding: 52px 7%;
+                background-position: 62% center;
+            }
+
+            h1 {
+                font-size: clamp(42px, 12vw, 56px);
+                letter-spacing: -1.5px;
+            }
+
+            .hero-copy {
+                font-size: 16px;
+            }
+
+            .brand {
+                font-size: 16px;
+            }
+
+            nav {
+                gap: 8px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            nav .contact-link {
+                padding: 7px 8px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="site">
+        <header class="topbar">
+            <a class="brand" href="landingpage.html#home">PAW &amp; TIDE</a>
+            <nav aria-label="Main menu">
+                <a href="landingpage.html#home">Home</a>
+                <a href="landingpage.html#shop">Shop</a>
+                <a href="services.html" aria-current="page">Services</a>
+                <a class="contact-link" href="landingpage.html#contact">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <p class="eyebrow">A little joy for every paw</p>
+                <h1>Everyday essentials for happier pets.</h1>
+                <p class="hero-copy">Explore food, play, and care essentials for the companions who make life brighter. Find a few new favorites for your pet at Paw &amp; Tide.</p>
+                <a class="button" href="#services">Explore our services <span aria-hidden="true">&nbsp;→</span></a>
+            </section>
+
+            <section class="content" id="services" aria-labelledby="services-heading">
+                <h2 class="section-heading" id="services-heading">Shop for every kind of care</h2>
+                <p class="section-intro">Browse useful picks for your pet's everyday routine, from mealtime to playtime.</p>
+                <div class="service-grid">
+                    <article class="card">
+                        <span class="card-mark" aria-hidden="true">🐾</span>
+                        <h2>Food &amp; treats</h2>
+                        <p>Explore food and treat options to make everyday mealtimes feel special for your companion.</p>
+                    </article>
+                    <article class="card">
+                        <span class="card-mark" aria-hidden="true">🧸</span>
+                        <h2>Toys &amp; play</h2>
+                        <p>Find toys and playful essentials for curious pets and the moments you share together.</p>
+                    </article>
+                    <article class="card">
+                        <span class="card-mark" aria-hidden="true">🫧</span>
+                        <h2>Care essentials</h2>
+                        <p>Browse everyday grooming and care supplies to help keep your pet feeling their best.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="content" id="contact">
+                <div class="cta">
+                    <h2>Find something for your favorite companion.</h2>
+                    <p>Explore the Paw &amp; Tide shop and discover everyday picks for happy pets.</p>
+                    <a class="button" href="landingpage.html#shop">Browse the shop</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>© Paw &amp; Tide Pet Shop</footer>
+    </div>
+</body>
+</html>

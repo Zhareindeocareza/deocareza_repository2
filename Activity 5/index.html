@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            font-family: Arial, sans-serif;
+            color: #102a56;
+            background:
+                radial-gradient(ellipse at 12% 15%, rgba(135, 206, 250, 0.35), transparent 32%),
+                radial-gradient(ellipse at 88% 85%, rgba(75, 129, 190, 0.3), transparent 34%),
+                #102a56;
+        }
+
+        .login-card {
+            width: min(100%, 420px);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 20px;
+            background: #dff3ff;
+            box-shadow: 0 24px 60px rgba(3, 18, 45, 0.35);
+        }
+
+        .welcome {
+            margin: 0 0 8px;
+            color: #397bb4;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .intro {
+            margin: 10px 0 28px;
+            color: #526b86;
+            line-height: 1.5;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #a9cde5;
+            border-radius: 9px;
+            background: #f8fcff;
+            color: #102a56;
+            font: inherit;
+        }
+
+        input:focus {
+            border-color: #397bb4;
+            outline: 3px solid rgba(57, 123, 180, 0.18);
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin: 4px 0 22px;
+            font-size: 13px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .remember input {
+            width: auto;
+            margin: 0;
+            accent-color: #173b70;
+        }
+
+        a {
+            color: #245e96;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: 0;
+            border-radius: 9px;
+            background: #173b70;
+            color: white;
+            cursor: pointer;
+            font: inherit;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #245e96;
+        }
+
+        .signup {
+            margin: 22px 0 0;
+            color: #526b86;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="login-card">
+        <p class="welcome">Welcome back</p>
+        <h1>Log in</h1>
+        <p class="intro">Please enter your details to access your account.</p>
+
+        <form>
+            <div class="field">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+            </div>
+
+            <div class="field">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+            </div>
+
+            <div class="options">
+                <label class="remember"><input type="checkbox" name="remember"> Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <button type="submit">Log in</button>
+        </form>
+
+        <p class="signup">Don't have an account? <a href="#">Sign up</a></p>
+    </main>
+</body>
+</html>

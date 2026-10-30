@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#52bdc9">
+    <title>Pet Care | Happy pets, happy days</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --navy: #123b72;
+            --blue: #246bb2;
+            --sky: #73c2ed;
+            --ice: #eaf7ff;
+            --pale: #f5fbff;
+            --ink: #173653;
+            --muted: #58748e;
+            --white: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+            background: linear-gradient(145deg, #e7f6ff, #c5e8fb 52%, #f5fbff);
+            color: var(--ink);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .site {
+            width: min(1200px, calc(100% - 48px));
+            margin: 24px auto;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 26px;
+            background: var(--white);
+            box-shadow: 0 28px 75px rgba(18, 59, 114, 0.2);
+        }
+
+        .topbar {
+            display: flex;
+            min-height: 82px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 16px 7%;
+            background: var(--navy);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #9ce3ff, #5bb4e8);
+            color: var(--navy);
+            font-size: 21px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: #e6f6ff;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav a:hover,
+        .nav a:focus-visible {
+            color: #9ce3ff;
+        }
+
+        .nav .nav-cta {
+            padding: 11px 17px;
+            border-radius: 9px;
+            background: #bceaff;
+            color: var(--navy);
+        }
+
+        .nav .nav-cta:hover,
+        .nav .nav-cta:focus-visible {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .hero {
+            position: relative;
+            display: flex;
+            min-height: 570px;
+            align-items: center;
+            padding: 68px 9%;
+            overflow: hidden;
+            background: linear-gradient(125deg, #174d88, #58b1e1);
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 1;
+            max-width: 590px;
+        }
+
+        .eyebrow {
+            margin: 0 0 17px;
+            color: #a6e5ff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 600px;
+            margin: 0;
+            color: var(--white);
+            font-size: clamp(44px, 6vw, 72px);
+            letter-spacing: -2.5px;
+            line-height: 1.02;
+        }
+
+        .hero-description {
+            max-width: 500px;
+            margin: 22px 0 30px;
+            color: #e5f5ff;
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 50px;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 21px;
+            border: 2px solid var(--navy);
+            border-radius: 10px;
+            background: var(--navy);
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 160ms ease, background 160ms ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            transform: translateY(-2px);
+            background: var(--blue);
+        }
+
+        .button-secondary {
+            border-color: rgba(18, 59, 114, 0.22);
+            background: rgba(255, 255, 255, 0.65);
+            color: var(--navy);
+        }
+
+        .button-secondary:hover,
+        .button-secondary:focus-visible {
+            background: var(--white);
+        }
+
+        .hero .button {
+            border-color: #bceaff;
+            background: #bceaff;
+            color: var(--navy);
+        }
+
+        .hero .button:hover,
+        .hero .button:focus-visible {
+            background: var(--white);
+        }
+
+        .hero .button-secondary {
+            border-color: rgba(255, 255, 255, 0.72);
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--white);
+        }
+
+        .hero .button-secondary:hover,
+        .hero .button-secondary:focus-visible {
+            background: rgba(255, 255, 255, 0.24);
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            padding: 26px 9%;
+            border-bottom: 1px solid #dceefa;
+            background: #fff;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--navy);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .benefit-icon {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            flex: 0 0 auto;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--ice);
+            color: var(--blue);
+            font-size: 18px;
+        }
+
+        .content {
+            padding: 72px 9%;
+            background: var(--pale);
+        }
+
+        .section-header {
+            max-width: 650px;
+            margin: 0 auto 34px;
+            text-align: center;
+        }
+
+        .section-header .eyebrow {
+            margin-bottom: 11px;
+        }
+
+        h2 {
+            margin: 0;
+            color: var(--navy);
+            font-size: clamp(30px, 4vw, 42px);
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            margin: 13px 0 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .category-card {
+            display: flex;
+            min-height: 175px;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 22px;
+            border: 1px solid #d2eafa;
+            border-radius: 17px;
+            background: linear-gradient(150deg, #fff, #eaf7ff);
+            color: var(--navy);
+            text-decoration: none;
+            transition: transform 160ms ease, box-shadow 160ms ease;
+        }
+
+        .category-card:hover,
+        .category-card:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(36, 107, 178, 0.13);
+        }
+
+        .category-icon {
+            display: grid;
+            width: 54px;
+            height: 54px;
+            place-items: center;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #c9efff, #a2daf7);
+            font-size: 27px;
+        }
+
+        .category-card strong {
+            font-size: 16px;
+        }
+
+        .category-card span:last-child {
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .closing {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 26px;
+            padding: 40px 9%;
+            background: linear-gradient(115deg, #174d88, #287bbd 65%, #58b1e1);
+            color: var(--white);
+        }
+
+        .closing h2 {
+            color: var(--white);
+            font-size: clamp(25px, 3vw, 34px);
+        }
+
+        .closing p {
+            margin: 9px 0 0;
+            color: #e3f5ff;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .closing .button {
+            border-color: var(--white);
+            background: var(--white);
+            color: var(--navy);
+            white-space: nowrap;
+        }
+
+        .closing .button:hover,
+        .closing .button:focus-visible {
+            background: #dff4ff;
+        }
+
+        footer {
+            padding: 20px 7%;
+            background: #103462;
+            color: #dcefff;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        @media (max-width: 850px) {
+            .hero {
+                min-height: 0;
+                flex-direction: column;
+                align-items: flex-start;
+                padding-right: 6%;
+                padding-left: 7%;
+            }
+
+            .hero-art {
+                width: min(100%, 390px);
+                min-width: 0;
+                align-self: center;
+            }
+
+            .benefits {
+                padding-right: 6%;
+                padding-left: 6%;
+            }
+
+            .content {
+                padding-right: 7%;
+                padding-left: 7%;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 620px) {
+            .site {
+                width: min(100% - 24px, 520px);
+                margin: 12px auto;
+                border-radius: 20px;
+            }
+
+            .topbar {
+                flex-wrap: wrap;
+                gap: 14px;
+                padding: 15px 6%;
+            }
+
+            .nav {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .nav a {
+                font-size: 12px;
+            }
+
+            .nav .nav-cta {
+                padding: 9px 11px;
+            }
+
+            .hero {
+                padding: 48px 7% 28px;
+            }
+
+            h1 {
+                max-width: 470px;
+                font-size: clamp(43px, 12vw, 62px);
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .benefits {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                justify-items: start;
+                padding: 22px 8%;
+            }
+
+            .benefit {
+                justify-content: flex-start;
+            }
+
+            .content {
+                padding: 54px 7%;
+            }
+
+            .category-grid {
+                gap: 12px;
+            }
+
+            .category-card {
+                min-height: 155px;
+                padding: 17px;
+            }
+
+            .closing {
+                grid-template-columns: 1fr;
+                padding: 32px 7%;
+            }
+
+            .closing .button {
+                justify-self: start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        :root {
+            --navy: #19173f;
+            --blue: #287eaa;
+            --sky: #55bfd0;
+            --ice: #e7fbfa;
+            --pale: #f3fbfa;
+            --ink: #242347;
+            --muted: #59617b;
+        }
+
+        body {
+            background:
+                radial-gradient(ellipse at 12% 12%, rgba(255, 255, 255, 0.72), transparent 35%),
+                radial-gradient(ellipse at 88% 78%, rgba(75, 181, 207, 0.32), transparent 34%),
+                linear-gradient(135deg, #a9e5e5, #78cbd8 48%, #b8e9e9);
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        }
+
+        .site {
+            border: 5px solid rgba(255, 255, 255, 0.76);
+            border-radius: 30px;
+            box-shadow: 0 28px 75px rgba(25, 23, 63, 0.2);
+        }
+
+        .topbar {
+            min-height: 92px;
+            background: #fff;
+        }
+
+        .brand {
+            gap: 12px;
+            color: var(--navy);
+            letter-spacing: 1.4px;
+        }
+
+        .brand-logo {
+            display: block;
+            width: 76px;
+            height: 58px;
+            border-radius: 10px;
+            background: #fff;
+            object-fit: contain;
+        }
+
+        .brand-mark {
+            display: none;
+        }
+
+        .nav a {
+            color: var(--navy);
+        }
+
+        .nav a:hover,
+        .nav a:focus-visible {
+            color: #168ca4;
+        }
+
+        .nav .nav-cta {
+            background: #f5e8ad;
+            color: var(--navy);
+        }
+
+        .nav .nav-cta:hover,
+        .nav .nav-cta:focus-visible {
+            background: #e7f8f6;
+        }
+
+        .hero {
+            min-height: 540px;
+            justify-content: space-between;
+            gap: 34px;
+            background:
+                radial-gradient(ellipse at 80% 22%, rgba(255, 255, 255, 0.45), transparent 30%),
+                radial-gradient(ellipse at 95% 100%, rgba(25, 23, 63, 0.18), transparent 45%),
+                linear-gradient(125deg, #43b7ca, #85d9d8 55%, #c8eff0);
+        }
+
+        .hero-copy {
+            max-width: 610px;
+        }
+
+        .eyebrow {
+            color: #fff4bf;
+        }
+
+        h1 {
+            color: var(--navy);
+            text-shadow: 0 2px 0 rgba(255, 255, 255, 0.26);
+        }
+
+        .hero-description {
+            color: #273853;
+        }
+
+        .hero .button {
+            border-color: var(--navy);
+            background: var(--navy);
+            color: #fff;
+        }
+
+        .hero .button:hover,
+        .hero .button:focus-visible {
+            background: #302d68;
+        }
+
+        .hero .button-secondary {
+            border-color: rgba(25, 23, 63, 0.45);
+            background: rgba(255, 255, 255, 0.44);
+            color: var(--navy);
+        }
+
+        .hero .button-secondary:hover,
+        .hero .button-secondary:focus-visible {
+            background: #fff;
+        }
+
+        .hero-art {
+            width: min(38%, 390px);
+            min-width: 280px;
+            aspect-ratio: 0.9;
+            flex: 0 0 auto;
+            border: 9px solid rgba(255, 255, 255, 0.9);
+            border-radius: 26px 26px 82px 26px;
+            background-color: #fff;
+            background-image: url("moodboard.jpg");
+            background-repeat: no-repeat;
+            background-position: 100% 45%;
+            background-size: 360% auto;
+            box-shadow: 0 22px 45px rgba(25, 23, 63, 0.17);
+        }
+
+        .about-section,
+        .who-section {
+            padding: 72px 9%;
+        }
+
+        .about-section {
+            background:
+                radial-gradient(ellipse at 5% 10%, rgba(85, 191, 208, 0.12), transparent 30%),
+                #f5fbfa;
+        }
+
+        .about-section .eyebrow,
+        .who-section .eyebrow {
+            color: #278da2;
+        }
+
+        .about-copy {
+            max-width: 790px;
+            margin: 0 auto;
+            padding: 30px 34px;
+            border: 1px solid #c8e9e8;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 15px 34px rgba(25, 23, 63, 0.07);
+        }
+
+        .about-copy p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.9;
+            text-align: center;
+        }
+
+        .who-section {
+            background: linear-gradient(140deg, #e5f7f5, #f8fbf8);
+        }
+
+        .contact-card {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 28px 34px;
+            border: 1px solid #c8e9e8;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 15px 34px rgba(25, 23, 63, 0.07);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        .contact-card p {
+            margin: 8px 0;
+        }
+
+        .contact-card a,
+        .footer-details a {
+            color: inherit;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-note {
+            margin-bottom: 18px !important;
+            color: var(--muted);
+            font-size: 13px;
+            font-style: italic;
+        }
+
+        footer {
+            padding: 32px 9%;
+        }
+
+        .student-note {
+            max-width: 720px;
+            margin: 0 auto 22px;
+            color: #f0f3ff;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .footer-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 24px;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            margin: 14px 0 0;
+            color: #c7d3e8;
+            font-size: 12px;
+        }
+
+        .benefits {
+            border-bottom-color: #d3efee;
+        }
+
+        .benefit-icon {
+            background: #e6f8f7;
+            color: var(--navy);
+        }
+
+        .content {
+            background:
+                radial-gradient(ellipse at 5% 10%, rgba(85, 191, 208, 0.12), transparent 30%),
+                #f5fbfa;
+        }
+
+        .category-card {
+            border-color: #c8e9e8;
+            background: linear-gradient(150deg, #fff, #eaf8f6);
+        }
+
+        .category-icon {
+            background: linear-gradient(145deg, #f8edbd, #bcebea);
+        }
+
+        .closing {
+            background: linear-gradient(115deg, #19173f, #276f91 65%, #48b8c9);
+        }
+
+        footer {
+            background: #151333;
+        }
+
+        @media (max-width: 620px) {
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+            }
+
+            .hero-art {
+                width: min(100%, 340px);
+                min-width: 0;
+                align-self: center;
+            }
+
+            .about-section,
+            .who-section {
+                padding: 54px 7%;
+            }
+
+            .about-copy,
+            .contact-card {
+                padding: 24px 20px;
+            }
+
+            .brand-logo {
+                width: 60px;
+                height: 48px;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .brand {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="site">
+        <header class="topbar">
+            <a class="brand" href="#home" aria-label="Pet Care home">
+                <img class="brand-logo" src="officiallogo.jpg" alt="">
+                <span>PET CARE</span>
+            </a>
+            <nav class="nav" aria-label="Main navigation">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a class="nav-cta" href="#who-we-are">Who we are</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" id="home">
+                <div class="hero-copy">
+                    <p class="eyebrow">Care, comfort, and happy paws</p>
+                    <h1>A little more love for every pet.</h1>
+                    <p class="hero-description">Welcome to Pet Care, a student project made to celebrate our animal companions and share the basics of caring for them.</p>
+                    <div class="hero-actions">
+                        <a class="button" href="#about">Discover Pet Care <span aria-hidden="true">&nbsp;→</span></a>
+                        <a class="button button-secondary" href="#who-we-are">Meet the creator</a>
+                    </div>
+                </div>
+                <div class="hero-art" role="img" aria-label="A dog enjoying a meal, pictured on the Pet Care moodboard"></div>
+            </section>
+
+            <section class="about-section" id="about">
+                <div class="section-header">
+                    <p class="eyebrow">Why this website</p>
+                    <h2>About Pet Care</h2>
+                </div>
+                <div class="about-copy">
+                    <p>Pet Care is a student-created website that shares helpful information about caring for pets. It introduces different kinds of companions and highlights the food, supplies, and attention they need. Its purpose is to encourage responsible, loving care and help pet owners explore basic pet-care ideas.</p>
+                </div>
+            </section>
+
+            <section class="who-section" id="who-we-are">
+                <div class="section-header">
+                    <p class="eyebrow">A school project with a big heart</p>
+                    <h2>Who are we?</h2>
+                    <p class="section-description">Pet Care is a student-made pet information website based in Calauan, Laguna.</p>
+                </div>
+                <div class="contact-card">
+                    <p class="contact-note">Fictional example contact details for this school project</p>
+                    <p><strong>Website:</strong> Pet Care</p>
+                    <p><strong>Location:</strong> Calauan, Laguna</p>
+                    <p><strong>Email:</strong> <a href="mailto:petcare.schoolproject.fake@gmail.com">petcare.schoolproject.fake@gmail.com</a></p>
+                    <p><strong>Contact number:</strong> <a href="tel:+639000000000">+63 900 000 0000</a></p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p class="student-note">I am a student from Dayap National High School, and I am developing this website as a school project. The website is about pets and the care they need. Through this project, I aim to share basic pet-care information in a simple way.</p>
+            <div class="footer-details">
+                <span>Pet Care</span>
+                <a href="mailto:petcare.schoolproject.fake@gmail.com">petcare.schoolproject.fake@gmail.com</a>
+                <a href="tel:+639000000000">+63 900 000 0000</a>
+            </div>
+            <p class="footer-note">Fictional example contact details for this school project</p>
+        </footer>
+    </div>
+</body>
+</html>
